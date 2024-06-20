@@ -1,0 +1,1 @@
+export type NoteType = { _id: string, createdAt: string, title: string, completed: boolean }

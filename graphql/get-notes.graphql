@@ -1,0 +1,32 @@
+query GetAllNotes {
+  getAllNotes {
+    completed
+    createdAt
+    title  
+    id
+  }
+}
+mutation CreateNote($input: CreateNoteInput!) {
+  createNote(input: $input) {
+    id
+    title
+    completed
+    createdAt
+  }
+}
+mutation DeleteNote($deleteNoteId: ID!) {
+  deleteNote(id: $deleteNoteId) {
+    id
+    title
+    completed
+    createdAt
+  }
+}
+mutation EditNote($input: EditNoteInput!) {
+  editNote(input: $input) {
+    id
+    title
+    completed
+    createdAt
+  }
+}
