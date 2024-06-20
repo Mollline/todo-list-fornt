@@ -13,6 +13,7 @@ const ApolloProviders = ({ children }: Props) => {
     <>
       <ApolloProvider client={client}>{children}</ApolloProvider>
     </>
+
   );
 };
 
