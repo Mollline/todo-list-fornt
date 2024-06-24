@@ -13,7 +13,7 @@ interface Props {
 
 export const TodoList: React.FC<Props> = ({ mode, setMode, da }) => {
   const [lastDay, setLastDay] = useState(false);
-  const [curDate, setCurDate] = useState('');
+  const [curDate, setCurDate] = useState("");
 
   useEffect(() => {
     const currentDate = new Date();
@@ -26,55 +26,63 @@ export const TodoList: React.FC<Props> = ({ mode, setMode, da }) => {
   }, []);
 
   const toggleLastDay = () => {
-    setLastDay(prevLastDay => !prevLastDay);
+    setLastDay((prevLastDay) => !prevLastDay);
   };
 
   const filteredNotes = lastDay
-    ? da.filter(note => {
-      const timestamp = Number(note.createdAt);
-      const date = new Date(timestamp);
-      const year = date.getFullYear();
-      const month = date.getMonth() + 1;
-      const day = date.getDate();
-      const fdDate = `${year}:${month}:${day}`;
-      return fdDate === curDate;
-    })
+    ? da.filter((note) => {
+        const timestamp = Number(note.createdAt);
+        const date = new Date(timestamp);
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        const fdDate = `${year}:${month}:${day}`;
+        return fdDate === curDate;
+      })
     : da;
 
   return (
-    <div className="w-full">
+    <div
+      className="w-full"
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+      }}
+    >
       <div className="flex items-center py-4">
         <AddList mode={mode} />
         <DropdownMenu>
-          <div style={{ color: mode ? 'black' : 'white', padding: '10px' }}>
+          <div style={{ color: mode ? "black" : "white", padding: "10px" }}>
             <button
               onClick={toggleLastDay}
               style={{
-                backgroundColor: mode ? 'black' : 'white',
-                color: mode ? 'white' : 'black',
-                borderRadius: '7px',
-                width: '100px',
-                height: '40px',
-                marginLeft: '350px',
+                backgroundColor: mode ? "black" : "white",
+                color: mode ? "white" : "black",
+                borderRadius: "7px",
+                width: "100px",
+                height: "40px",
+                marginLeft: "350px",
               }}
             >
-              {lastDay ? 'All' : 'Last day'}
+              {lastDay ? "All" : "Last day"}
             </button>
           </div>
         </DropdownMenu>
         <DropdownMenu>
-          <div style={{ color: mode ? 'black' : 'white', padding: '10px' }}>
+          <div style={{ color: mode ? "black" : "white", padding: "10px" }}>
             <button
               onClick={() => setMode(!mode)}
               style={{
-                backgroundColor: mode ? 'black' : 'white',
-                color: mode ? 'white' : 'black',
-                borderRadius: '7px',
-                width: '100px',
-                height: '40px',
+                backgroundColor: mode ? "black" : "white",
+                color: mode ? "white" : "black",
+                borderRadius: "7px",
+                width: "100px",
+                height: "40px",
               }}
             >
-              {mode ? 'dark' : 'light'}
+              {mode ? "dark" : "light"}
             </button>
           </div>
         </DropdownMenu>
@@ -85,16 +93,18 @@ export const TodoList: React.FC<Props> = ({ mode, setMode, da }) => {
             <TableRow>
               <div
                 style={{
-                  color: 'white',
-                  fontWeight: 'bold',
-                  padding: '10px',
-                  justifyContent: 'space-between',
-                  display: 'flex',
-                  paddingRight: '100px',
+                  color: "white",
+                  fontWeight: "bold",
+                  padding: "10px",
+                  justifyContent: "space-between",
+                  display: "flex",
+                  paddingRight: "100px",
                 }}
               >
-                <div style={{ color: mode ? 'black' : 'white' }}>Todo Lists</div>
-                <div style={{ color: mode ? 'black' : 'white' }}>Date</div>
+                <div style={{ color: mode ? "black" : "white" }}>
+                  Todo Lists
+                </div>
+                <div style={{ color: mode ? "black" : "white" }}>Date</div>
               </div>
             </TableRow>
             {filteredNotes.map(({ id, title, completed, createdAt }) => (
